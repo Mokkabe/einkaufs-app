@@ -93,7 +93,6 @@ function App() {
     }))
   }
 
-<<<<<<< HEAD
   function erledigteEntfernen() {
     setDaten((d) => ({
       ...d,
@@ -104,8 +103,6 @@ function App() {
     }))
   }
 
-=======
->>>>>>> origin/1-einkaufsliste-pro-geschäft-umsetzten
   function aktionHinzufuegen(e) {
     e.preventDefault()
     const { text, von, bis } = aktionForm
@@ -122,10 +119,7 @@ function App() {
   }
 
   const aktuelleListe = daten.listen[geschaeft]
-<<<<<<< HEAD
   const hatErledigte = aktuelleListe.some((a) => a.erledigt)
-=======
->>>>>>> origin/1-einkaufsliste-pro-geschäft-umsetzten
   const sortierteAktionen = [...daten.aktionen].sort((a, b) => a.von.localeCompare(b.von))
 
   return (
@@ -180,7 +174,6 @@ function App() {
             </li>
           ))}
         </ul>
-<<<<<<< HEAD
 
         <button
           className="erledigt-button"
@@ -189,8 +182,6 @@ function App() {
         >
           Erledigte entfernen
         </button>
-=======
->>>>>>> origin/1-einkaufsliste-pro-geschäft-umsetzten
       </section>
 
       <section className="karte">
