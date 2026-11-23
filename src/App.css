@@ -1,40 +1,119 @@
+html {
+    font-size: 17px;
+}
+
+:root {
+    --gruen: #2e9e5b;
+    --rot: #e53935;
+    --orange: #fb8c00;
+    --blau: #1e88e5;
+    --lila: #8e24aa;
+    --pink: #ec407a;
+    --text: #2b2140;
+    --text-leise: #7b7390;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    font-family: system-ui, sans-serif;
-    background: #f4f6f4;
-    color: #222;
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffe3f1 0%, #dff4ff 50%, #fff6d6 100%);
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
 }
 
 .app {
     max-width: 480px;
     margin: 0 auto;
-    padding: 16px;
+    padding: 20px 16px 40px;
 }
 
 h1 {
-    font-size: 1.6rem;
+    font-size: 2rem;
     text-align: center;
+    margin: 8px 0 20px;
+    background: linear-gradient(90deg, var(--pink), var(--orange), var(--gruen));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+h1::before,
+h1::after {
+    content: ' 🛒';
 }
 
 h2 {
-    font-size: 1.2rem;
-    margin-top: 0;
+    font-size: 1.15rem;
+    margin: 0 0 12px;
+    color: var(--text);
+}
+
+h3 {
+    font-size: 1rem;
+    margin: 16px 0 6px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    background: #e8f8ef;
+    color: #1b6b3c;
+    display: inline-block;
+}
+
+h3::before {
+    content: '🏪 ';
 }
 
 .karte {
-    background: white;
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 16px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 6px 18px rgba(80, 60, 140, 0.12);
+    border-top: 6px solid var(--blau);
+}
+
+/* Übersicht */
+.app>section:nth-of-type(1) {
+    border-top-color: var(--orange);
+}
+
+.app>section:nth-of-type(1) h2::before {
+    content: '📋 ';
+}
+
+/* Einkaufsliste */
+.app>section:nth-of-type(2) {
+    border-top-color: var(--gruen);
+}
+
+.app>section:nth-of-type(2) label::before {
+    content: '🏬 ';
+}
+
+/* Aktionen */
+.app>section:nth-of-type(3) {
+    border-top-color: var(--pink);
+}
+
+.app>section:nth-of-type(3) h2::before {
+    content: '🏷️ ';
 }
 
 .erinnerung {
-    background: #fff4d6;
-    border-left: 4px solid #e0a800;
-    border-radius: 8px;
-    padding: 12px;
-    margin-bottom: 16px;
+    background: linear-gradient(90deg, #fff3b0, #ffe0b2);
+    border-radius: 16px;
+    padding: 14px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.2);
+}
+
+.erinnerung strong::before {
+    content: '🔔 ';
 }
 
 .erinnerung ul {
@@ -42,25 +121,41 @@ h2 {
     padding-left: 20px;
 }
 
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
 select,
 input:not([type='checkbox']) {
     font-size: 1rem;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    padding: 12px 14px;
+    border: 2px solid #e6dff5;
+    border-radius: 14px;
     width: 100%;
-    box-sizing: border-box;
+    background: #fbfaff;
+    color: var(--text);
 }
 
-label {
-    display: block;
-    margin-bottom: 8px;
+select:focus,
+input:focus {
+    outline: none;
+    border-color: var(--blau);
+}
+
+input[type='checkbox'] {
+    width: 22px;
+    height: 22px;
+    accent-color: var(--gruen);
+    flex-shrink: 0;
 }
 
 .zeile {
     display: flex;
     gap: 8px;
-    margin: 12px 0;
+    margin: 8px 0 14px;
 }
 
 .zeile input {
@@ -69,17 +164,38 @@ label {
 
 button {
     font-size: 1rem;
-    padding: 8px 14px;
+    padding: 12px 18px;
     border: none;
-    border-radius: 8px;
-    background: #2e7d32;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--gruen), #43c77f);
     color: white;
+    font-weight: 700;
     cursor: pointer;
+    box-shadow: 0 4px 10px rgba(46, 158, 91, 0.3);
+    transition: transform 0.1s;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.zeile button::before {
+    content: '➕ ';
+}
+
+.aktion-form button::before {
+    content: '💾 ';
 }
 
 .loeschen {
-    background: #c62828;
-    padding: 4px 10px;
+    background: linear-gradient(135deg, var(--rot), #ff7043);
+    box-shadow: 0 4px 10px rgba(229, 57, 53, 0.3);
+    padding: 6px 12px;
+    font-size: 0.9rem;
+}
+
+.loeschen::before {
+    content: '';
 }
 
 .liste {
@@ -92,47 +208,71 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 8px;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 2px dashed #efe9fb;
+}
+
+.liste li:last-child {
+    border-bottom: none;
+}
+
+.app>section:nth-of-type(1) .liste li::before {
+    content: '🛍️';
+    margin-right: 4px;
 }
 
 .liste li label {
     margin: 0;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
+    cursor: pointer;
+    font-weight: 500;
 }
 
 .erledigt {
     text-decoration: line-through;
-    color: #888;
+    color: var(--text-leise);
 }
 
 .leer {
-    color: #888;
+    color: var(--text-leise);
     font-style: italic;
+    margin: 8px 0;
 }
 
 .aktion-form {
     display: grid;
-    gap: 8px;
-    margin-bottom: 12px;
+    gap: 10px;
+    margin-bottom: 14px;
 }
 
 .aktion-form label {
     display: grid;
     gap: 4px;
     margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-leise);
 }
 
 .erledigt-button {
-    margin-top: 12px;
+    margin-top: 14px;
     width: 100%;
-    background: #607d8b;
+    background: linear-gradient(135deg, var(--blau), #42a5f5);
+    box-shadow: 0 4px 10px rgba(30, 136, 229, 0.3);
+}
+
+.erledigt-button::before {
+    content: '🧹 ';
 }
 
 .erledigt-button:disabled {
-    background: #b0bec5;
+    background: #cfd8dc;
+    box-shadow: none;
     cursor: not-allowed;
+}
+
+.erledigt-button:disabled::before {
+    content: '';
 }
