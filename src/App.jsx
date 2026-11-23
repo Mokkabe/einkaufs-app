@@ -15,7 +15,12 @@ function ladeDaten() {
   try {
     const gespeichert = localStorage.getItem(SPEICHER_SCHLUESSEL)
     if (!gespeichert) return leereDaten()
-    return { ...leereDaten(), ...JSON.parse(gespeichert) }
+    const geladen = JSON.parse(gespeichert)
+    return {
+      ...leereDaten(),
+      ...geladen,
+      listen: { ...leereDaten().listen, ...geladen.listen },
+    }
   } catch {
     return leereDaten()
   }
