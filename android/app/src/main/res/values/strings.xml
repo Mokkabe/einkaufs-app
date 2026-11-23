@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Einkaufs-App</string>
+    <string name="title_activity_main">Einkaufs-App</string>
+    <string name="package_name">com.sandra.einkaufsapp</string>
+    <string name="custom_url_scheme">com.sandra.einkaufsapp</string>
+</resources>
