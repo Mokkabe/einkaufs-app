@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
-const GESCHAEFTE = ['Penny', 'Hofer', 'Spar', 'Billa', 'Bipa', 'DM']
+const GESCHAEFTE = ['Penny', 'Hofer', 'Spar', 'Billa', 'Bipa', 'DM', 'Lidl']
 const SPEICHER_SCHLUESSEL = 'einkaufs-app-daten'
 
 function leereDaten() {
