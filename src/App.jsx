@@ -93,6 +93,16 @@ function App() {
     }))
   }
 
+  function erledigteEntfernen() {
+    setDaten((d) => ({
+      ...d,
+      listen: {
+        ...d.listen,
+        [geschaeft]: d.listen[geschaeft].filter((a) => !a.erledigt),
+      },
+    }))
+  }
+
   function aktionHinzufuegen(e) {
     e.preventDefault()
     const { text, von, bis } = aktionForm
@@ -109,6 +119,7 @@ function App() {
   }
 
   const aktuelleListe = daten.listen[geschaeft]
+  const hatErledigte = aktuelleListe.some((a) => a.erledigt)
   const sortierteAktionen = [...daten.aktionen].sort((a, b) => a.von.localeCompare(b.von))
 
   return (
@@ -163,6 +174,14 @@ function App() {
             </li>
           ))}
         </ul>
+
+        <button
+          className="erledigt-button"
+          onClick={erledigteEntfernen}
+          disabled={!hatErledigte}
+        >
+          Erledigte entfernen
+        </button>
       </section>
 
       <section className="karte">
