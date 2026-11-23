@@ -57,6 +57,11 @@ function App() {
     (a) => a.von >= heute && a.von <= morgen && a.bis >= heute
   )
 
+  // Übersicht: offene Artikel pro Geschäft (nur Geschäfte mit offenen Artikeln)
+  const offeneProGeschaeft = GESCHAEFTE
+    .map((g) => ({ geschaeft: g, artikel: daten.listen[g].filter((a) => !a.erledigt) }))
+    .filter((eintrag) => eintrag.artikel.length > 0)
+
   function artikelHinzufuegen(e) {
     e.preventDefault()
     const text = neuerArtikel.trim()
@@ -138,6 +143,23 @@ function App() {
           </ul>
         </div>
       )}
+
+      <section className="karte">
+        <h2>Übersicht: Was brauchst du?</h2>
+        {offeneProGeschaeft.length === 0 && (
+          <p className="leer">Gerade ist nichts offen.</p>
+        )}
+        {offeneProGeschaeft.map(({ geschaeft: g, artikel }) => (
+          <div key={g}>
+            <h3>{g}</h3>
+            <ul className="liste">
+              {artikel.map((a) => (
+                <li key={a.id}>{a.text}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </section>
 
       <section className="karte">
         <label>
